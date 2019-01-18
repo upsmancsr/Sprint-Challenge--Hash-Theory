@@ -8,7 +8,7 @@ Answer *get_indices_of_item_weights(int *weights, int length, int limit)
   HashTable *ht = create_hash_table(16);
 
   // YOUR CODE HERE
-  Answer *answer = malloc(sizeof(Answer));
+  Answer *answer = malloc(sizeof(Answer)); // allocate memory the answer that will be returned
   
   for (int i = 0; i < length; i++) {
     int return_index = hash_table_retrieve(ht, weights[i]); // return_index corresponds to a value on of a pair in the ht
