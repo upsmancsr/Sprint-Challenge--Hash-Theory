@@ -23,8 +23,14 @@ unsigned int hash(unsigned int x, int max) {
 
 void destroy_pair(LinkedPair *pair)
 {
-  if (pair != NULL) free(pair);
+  if (pair != NULL) {
+    // pair->key = NULL;
+    // pair->value = NULL;
+    free(pair);
+    
+  }
 }
+
 
 HashTable *create_hash_table(int capacity)
 {

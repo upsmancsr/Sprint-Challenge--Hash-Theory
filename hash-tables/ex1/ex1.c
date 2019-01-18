@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "hashtable.h"
+#include "hashtable.h" //gives access to hash table methods
 #include "ex1.h"
 
 Answer *get_indices_of_item_weights(int *weights, int length, int limit)
@@ -8,6 +8,21 @@ Answer *get_indices_of_item_weights(int *weights, int length, int limit)
   HashTable *ht = create_hash_table(16);
 
   // YOUR CODE HERE
+  Answer *answer = malloc(sizeof(Answer));
+  
+  for (int i = 0; i < length; i++) {
+    int return_index = hash_table_retrieve(ht, weights[i]); // return_index corresponds to a value on of a pair in the ht
+                                                            // initially, there is no hash table, but as the for-loop progresses it will construct the ht
+    
+    if (return_index != -1) {
+      answer->index_1 = i;
+      answer->index_2 = return_index;
+      return answer;
+    } 
+
+    int delta = (limit - weights[i]);	    
+    hash_table_insert(ht, delta, i);  // insert a pair into the ht with key = delta and value = i
+  } 
 
   return NULL;
 }
