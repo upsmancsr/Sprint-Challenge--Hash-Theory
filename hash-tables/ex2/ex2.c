@@ -18,11 +18,9 @@ char **reconstruct_trip(Ticket **tickets, int length)
   }
 
   char *origin = "NONE";
-  for (int j = 0; j < length; j++) {
-    if (j == 0) {
-      
-      route[j] = hash_table_retrieve(ht, origin);
-    }
+  route[0] = hash_table_retrieve(ht, origin);
+  for (int j = 1; j < length; j++) {
+    
     route[j] = hash_table_retrieve(ht, route[j - 1]);
   }
 
